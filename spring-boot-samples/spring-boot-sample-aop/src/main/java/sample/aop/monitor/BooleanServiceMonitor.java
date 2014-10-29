@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BooleanServiceMonitor {
 
-	@Before("execution(* sample..*Service.*(java.lang.Boolean))")
+	@Before("call(* sample..*Service.*(java.lang.Boolean))")
 	public void logServiceAccess() {
 		System.out.println("You used a method with only one boolean parameter. "
 				+ "Refactor it into 2 methods with True, False at the end.");
