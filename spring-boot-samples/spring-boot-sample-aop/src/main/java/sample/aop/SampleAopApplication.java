@@ -23,6 +23,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import sample.aop.service.BooleanService;
 import sample.aop.service.HelloWorldService;
 
 @Configuration
@@ -35,9 +36,15 @@ public class SampleAopApplication implements CommandLineRunner {
 	@Autowired
 	private HelloWorldService helloWorldService;
 
+	@Autowired
+	private BooleanService booleanService;
+
 	@Override
 	public void run(String... args) {
 		System.out.println(this.helloWorldService.getHelloMessage());
+
+		Boolean myBool = true;
+		this.booleanService.fancyBoolean(myBool);
 	}
 
 	public static void main(String[] args) throws Exception {
